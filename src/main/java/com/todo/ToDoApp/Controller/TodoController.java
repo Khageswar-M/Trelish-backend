@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @Controller
 @RestController
 @RequestMapping("/api/todo")
@@ -70,7 +70,7 @@ public class TodoController {
         return todoServices.createUser(userDto);
     }
 
-    @PostMapping("/get/userid")
+    @GetMapping("/get/userid")
     public ResponseEntity<String> getUserId(@RequestParam String email,
                                             @RequestParam String password){
         try{
@@ -79,5 +79,13 @@ public class TodoController {
         }catch(RuntimeException e){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
+    }
+
+    //Create rest api to check the valid userName
+    @GetMapping("/check")
+    public ResponseEntity<Boolean> checkUserName(@RequestParam String user){
+        if(user.length() < 5) return ResponseEntity.ok(false);
+        boolean exist = todoServices.findUserName(user);
+        return ResponseEntity.ok(exist);
     }
 }

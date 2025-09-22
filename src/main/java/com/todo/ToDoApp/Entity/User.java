@@ -16,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class User {
     @Id
+    @Column(unique = true, nullable = false)
     private String userId;
 
     @Column(unique = true, nullable = false)

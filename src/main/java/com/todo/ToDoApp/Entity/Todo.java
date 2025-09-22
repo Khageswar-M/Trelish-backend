@@ -26,6 +26,7 @@ public class Todo {
     private Long id;
 
     //Foreign key
+    @Column(nullable = false)
     private String userId;
 
     @Column(nullable = false, length = 255)

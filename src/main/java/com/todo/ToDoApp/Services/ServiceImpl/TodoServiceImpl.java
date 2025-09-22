@@ -103,5 +103,10 @@ public class TodoServiceImpl implements TodoServices {
         }
     }
 
+    @Override
+    public boolean findUserName(String email) {
+        return userRepository.findByEmail(email) != null;
+    }
+
 
 }

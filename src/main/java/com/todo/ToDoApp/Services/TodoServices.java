@@ -23,4 +23,6 @@ public interface TodoServices {
     UserDto createUser(UserDto userDto);
 
     String getUserId(String email, String password);
+
+    boolean findUserName(String email);
 }
